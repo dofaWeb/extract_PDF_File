@@ -34,7 +34,7 @@ df = pd.DataFrame(extracted_data, columns=["Tariff Code", "Tariff Name"])
 # Display the result
 # print(df)
 
-def get_tariff_code_by_name(tariff_name, df):
+def get_tariff_code_by_name(tariff_name):
     # Clean the input tariff name
     cleaned_name = tariff_name.replace('\n', '').strip()
     
@@ -45,9 +45,3 @@ def get_tariff_code_by_name(tariff_name, df):
     if not result.empty:
         return result['Tariff Code'].iloc[0]
     return None
-
-
-tariff_name = 'Controlled Load 1'
-tariff_code = get_tariff_code_by_name(tariff_name, df)
-
-print(tariff_code)  # Output: EA010
