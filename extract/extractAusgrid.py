@@ -36,10 +36,10 @@ df = pd.DataFrame(extracted_data, columns=["Tariff Code", "Tariff Name"])
 
 def get_tariff_code_by_name(tariff_name):
     # Clean the input tariff name
-    cleaned_name = tariff_name.replace('\n', '').strip()
+    cleaned_name = tariff_name.replace('\n', '').strip().lower()
     
     # Search for the cleaned tariff name in the DataFrame
-    result = df[df['Tariff Name'].str.strip() == cleaned_name]
+    result = df[df['Tariff Name'].str.strip().str.lower().str.startswith(cleaned_name)]
     
     # Return the corresponding Tariff Code if found, else return None
     if not result.empty:
